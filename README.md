@@ -32,7 +32,9 @@ ________________________________
 These workflows assume you have access to your own git repository (as opposed to a looker-hosted git repository) and have pull requests enabled on your Looker project. To add these workflows to your project, you will need to add a .github folder to the git repository where your project lives, as well as a ‘workflows’ folder within that hidden .github folder - so the .yml files would all live in .github/workflows as demonstrated in this repository. You also need to add the following 3  secrets to your git repository:
 
 `my_client_id` - Looker API client ID
+
 `my_client_secret` - Looker API client Secret
+
 `SLACK_WEBHOOK` - Slack webhook generated [following these steps](https://api.slack.com/messaging/webhooks#posting_with_webhooks)
 
 For specifics on how to add  those secrets to your git repository, [see these steps](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets#creating-encrypted-secrets).

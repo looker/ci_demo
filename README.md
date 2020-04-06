@@ -6,6 +6,8 @@ These files are meant as inspiration for seasoned developers who want to minimiz
 
 Feel free to use and modify this code as you wish, but do note that this is not officially supported by Looker, so DCL won’t  be able to help you redevelop or troubleshoot your code. Instead, please post any questions you might have here or in Looker’s discourse community!
 
+For more information and to see this in action, [watch this video](https://www.youtube.com/watch?v=M2o1qzgUnqs&feature=youtu.be) 
+
 ________________________________
 
 ## Overview

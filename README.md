@@ -12,18 +12,18 @@ ________________________________
 
 There are three general workflows contained in this repository. These are:
 
-**Spectacles** - automatically run SQL validation tests on your LookML project upon opening a pull request (spectacles.yml)
+**Spectacles** - automatically run SQL validation tests on your LookML project upon opening a pull request ([spectacles.yml](https://github.com/looker/ci_demo/blob/master/.github/workflows/spectacles.yml))
 
-**pyLookML** - periodically schedule the auto-generation of lookML for new fields in your database schema (generate_lookml.py + generate_lookml.yml)
+**pyLookML** - periodically schedule the auto-generation of lookML for new fields in your database schema ([generate_lookml.py](https://github.com/looker/ci_demo/blob/master/.github/workflows/generate_lookml.py) + [generate_lookml.yml](https://github.com/looker/ci_demo/blob/master/.github/workflows/generate_lookml.yml))
 
-**Looker Python SDK** - periodically run the content validator and send the results to Slack in order to find broken Looker content before your end users do (content_validate.yml  + content_validate.py)
+**Looker Python SDK** - periodically run the content validator and send the results to Slack in order to find broken Looker content before your end users do ([content_validate.yml](https://github.com/looker/ci_demo/blob/master/.github/workflows/content_validate.yml)  + [content_validate.py](https://github.com/looker/ci_demo/blob/master/.github/workflows/content_validation.py))
 
 
 All three of these workflows are automated using github actions (more on those [here](https://github.com/features/actions)). The associated .yml files spin up VMs through github, install all specified dependencies, and run the code with the variables specified in these steps. Where those variables are sensitive (Looker API credentials and slack webhook), the actual values were added as secrets to the git repository and referenced as variables (see [these steps](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets#creating-encrypted-secrets)).
 
 All three workflows include sending notifications to slack channels using a slack webhook (that can be generated following [these steps](https://api.slack.com/messaging/webhooks#posting_with_webhooks)), but these are not required for the underlying tools to run. 
 
-For our demo, we used github actions free tier. Information on github action’s free tier [can be found here](https://help.github.com/en/github/setting-up-and-managing-billing-and-payments-on-github/about-billing-for-github-actions)
+For our demo, we used github actions free tier. Information on github action’s free tier [can be found here](https://help.github.com/en/github/setting-up-and-managing-billing-and-payments-on-github/about-billing-for-github-actions).
 
 ________________________________
 
@@ -48,9 +48,10 @@ Spectacles is an open-source continuous integration tool designed to perform a v
 The file spectacles.yml is a workflow that automatically runs spectacle's SQL validation tests upon opening a pull request on your Looker project. Once the validation tests complete, a notification of the success or failure of the event is posted in slack.
 
 In order to stand this yml file up on your own instance, you will need to insert:
-      your own base URL ( --base-url https://<my_looker_instance_url>)
-      Your own project name (--project <my_project>)
-
+```
+      your own base URL             --base-url https://<my_looker_instance_url>
+      Your own project name         --project <my_project>
+```
 ________________________________
 
 ## pyLookML
@@ -62,11 +63,12 @@ The file generate_lookml.py must be updated with the query that contains the fie
 The file generate_lookml.yml schedules the generate_lookml.py file to run via a cron schedule and notify a slack channel upon generating the new fields.
 
 In order to stand this yml file up on your own instance, you will need to insert:
-      your own base URL ( --base-url https://<my_looker_instance_url>)
-      Your own project name ( --project <my_project>)
-      Your own repo path ( --repo <user_or_organization>/<repo_name> )
-      Your own project name ( --project <project_name> > generate.txt)
-
+```
+      your own base URL                   --base-url https://<my_looker_instance_url>
+      Your own project name               --project <my_project>
+      Your own repo path                  --repo <user_or_organization>/<repo_name>
+      Your own project name               --project <project_name> > generate.txt
+```
 
 ________________________________
 
@@ -78,8 +80,9 @@ The file content_validation.py does not require any modifications to run on your
 The file content_validation.yml schedules the content_validation.py to  run on a cron schedule and notify a slack channel based on those results.
 
 In order to stand this yml file up on your own instance, you will need to insert:
-      your own base URL ( --base-url https://<my_looker_instance_url>)
-      Your own url link in the slack payload ( "text": "Check your content in the <https:/<my_looker_instance_url>/content_validator|Content Validator>." ) 
-
+```
+      your own base URL                         --base-url https://<my_looker_instance_url>
+      Your own url link in the slack payload    "text": "Check your content in the <https:/<my_looker_instance_url>/content_validator|Content Validator>."
+```
 
 

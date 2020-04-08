@@ -3,7 +3,7 @@ name: generate_lookml
 on:
   check_run:
   schedule:
-    - cron: '0 9 * * WED'
+    #- cron: '0 9 * * WED'  # Uncomment this  line for the schedule to run
     #- cron: '* * * * *'
 
 jobs:

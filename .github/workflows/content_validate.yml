@@ -3,7 +3,7 @@ name: content_validate
 on:
   check_run:
   schedule:
-    - cron: '0 9 * * WED'
+    #- cron: '0 9 * * WED' # uncomment this line to schedule this
     #- cron: '* * * * *'
 
 jobs:
